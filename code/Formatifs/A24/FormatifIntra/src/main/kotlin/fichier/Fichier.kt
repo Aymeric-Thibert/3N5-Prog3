@@ -1,15 +1,24 @@
 package fichier
 
+import com.strumenta.kotlinmultiplatform.errMessage
 import java.io.File
 
 fun main() {
     // Tu peux tester tes fonctions en les appellants ici.
+    lire()
+    val args = arrayOf("pipo.txt")
+    val result = ecrire(args)
+    println("\n\n $result")
+
 }
 
 /**
  * (1 point) Affiche dans la console le contenu du fichier message.txt qui se trouve dans le projet de départ.
  */
 fun lire() {
+val fichier: File = File("message.txt")
+    val textMessage: String = fichier.readText()
+    println(textMessage)
 
 }
 
@@ -22,5 +31,19 @@ fun lire() {
  * Si tout s'est bien passé, on retourne la valeur 1.
  */
 fun ecrire(args: Array<String>): Int {
-    return 1
+    var nomFichier: String = args[0]
+
+    var fichier: File =File(nomFichier)
+    if (args.count() <2){
+        println("Merci de donne 2 arg valide")
+        return -1
+
+    }
+
+    val contenu: String = args[1]
+    fichier.printWriter().use { out ->
+        out.println(contenu)
+        return 1
+    }
+
 }

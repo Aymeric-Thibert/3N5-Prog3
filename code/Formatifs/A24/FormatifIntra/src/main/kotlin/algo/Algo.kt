@@ -2,6 +2,8 @@ package algo
 
 fun main() {
     // Tu peux tester la fonction en l'appelant ici.
+
+    println(racineCarre(98f))
 }
 
 /**
@@ -28,6 +30,26 @@ fun racineCarre(x: Float): Float {
 
           fin du pour sur les fraction
           renvoyer resultat
-     */
+
     return 0f
+    */
+    var resultat: Float =0.0f
+
+    while ((resultat + 1f) * (resultat +1f ) <= x){
+        resultat++
+    }
+    val fractions: Array<Float> = arrayOf(0.1f, 0.01f, 0.001f, 0.0001f)
+
+
+    for (fraction in fractions){
+        var base: Float = resultat
+        for (chiffre in 0..9){
+            val test: Float = base + (fraction * chiffre)
+            if (test * test <= x){
+                resultat = test
+            }
+        }
+    }
+    return  resultat
+
 }
