@@ -39,5 +39,20 @@ fun main() {
  * </body>
  */
 fun jsoup(mots: List<String>): Document? {
-    return null
+    val url=  "https://info.cegepmontpetit.ca/3N5-Prog3/intraA24-2.html"
+    val doc = Jsoup.connect(url).get()
+
+    val body: Element? = doc.body()
+
+    body?.let {
+        for (mot in mots){
+          val div= doc.createElement("div")
+          div.text(mot)
+          it.appendChild(div)
+        }
+
+    }
+    println(doc.html())
+
+    return doc
 }

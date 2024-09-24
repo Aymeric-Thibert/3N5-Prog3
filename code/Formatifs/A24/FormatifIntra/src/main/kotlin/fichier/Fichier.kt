@@ -6,7 +6,7 @@ import java.io.File
 fun main() {
     // Tu peux tester tes fonctions en les appellants ici.
     lire()
-    val args = arrayOf("pipo.txt")
+    val args = arrayOf("pipo.txt", )
     val result = ecrire(args)
     println("\n\n $result")
 
@@ -31,19 +31,21 @@ val fichier: File = File("message.txt")
  * Si tout s'est bien passé, on retourne la valeur 1.
  */
 fun ecrire(args: Array<String>): Int {
-    var nomFichier: String = args[0]
-
-    var fichier: File =File(nomFichier)
-    if (args.count() <2){
+    if (args.count() !=2){
         println("Merci de donne 2 arg valide")
         return -1
 
     }
 
+    var nomFichier: String = args[0]
+
+    var fichier: File =File(nomFichier)
+
+
     val contenu: String = args[1]
     fichier.printWriter().use { out ->
         out.println(contenu)
-        return 1
-    }
 
+    }
+    return 1
 }
