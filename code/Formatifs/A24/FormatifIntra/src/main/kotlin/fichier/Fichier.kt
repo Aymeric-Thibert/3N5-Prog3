@@ -31,21 +31,18 @@ val fichier: File = File("message.txt")
  * Si tout s'est bien passé, on retourne la valeur 1.
  */
 fun ecrire(args: Array<String>): Int {
-    if (args.count() !=2){
-        println("Merci de donne 2 arg valide")
+    if (args.count() <2){
+        println("erreur")
         return -1
-
     }
+    var nomfichier: String = args[0]
+    var fichier: File = File(nomfichier)
 
-    var nomFichier: String = args[0]
+    var contenue: String = args[1]
 
-    var fichier: File =File(nomFichier)
-
-
-    val contenu: String = args[1]
-    fichier.printWriter().use { out ->
-        out.println(contenu)
-
+    fichier.printWriter().use {
+        out -> out.println(contenue)
     }
     return 1
+
 }
